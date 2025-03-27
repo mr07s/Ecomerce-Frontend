@@ -1,0 +1,83 @@
+<!-- <p class="text-3xl font-bold underline">home works!</p>
+<button (click)="btnClick()">Hi there</button> -->
+<div>
+
+<div *ngIf="categories" >
+   
+    <!-- <pre>{{ categories | json }}</pre> -->
+  
+        
+        
+    <div class="h-[100vh] grid grid-cols-3 ml-[auto] mr-[auto] pt-[2rem] gap-2 w-[80vw] ">
+        <div *ngFor="let category of categories"  >         
+                <!-- <p>{{category.categoryName}}</p > -->
+
+
+<div class="max-w-xl w-[18rem] h-[12rem] p-6 bg-white border border-gray-200 rounded-lg shadow-sm ">
+    <a href="#">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">{{category.categoryName}}</h5>
+    </a>
+    @if (category.categoryDescription) {
+
+        <p class="mb-3 font-normal text-gray-700 ">{{category.categoryDescription}}</p>
+    }
+    <a (click)="navigateToProductAdmin(category.categoryId)"  
+    class="inline-flex items-center px-4  text-sm font-medium text-center  border text-black rounded-sm hover:bg-gray-200  hover:cursor-pointer">
+        Click
+       
+    </a>
+    <button class="border rounded-sm px-2 hover:cursor-pointer hover:bg-grey-300" (click)="deleteCategory(category.categoryId)">Delete</button>
+
+    
+</div>
+</div>
+
+
+
+
+
+</div>
+        
+        
+ 
+
+</div>
+<button class="border h-[3rem] w-[3rem] absolute top-0 mt-[5rem] ml-[2rem]">Add</button>
+
+
+<!-- Form -->
+<div class="max-w-md mx-auto p-4 relative bg-white">
+    <h2 class="text-xl font-bold mb-4">Create Category</h2>
+    
+    <form (ngSubmit)="onsubmit()">
+      <div class="mb-4">
+        <label class="block mb-1">Category Name</label>
+        <input 
+          type="text" 
+          [(ngModel)]="category.categoryName"
+          name="name"
+          class="w-full p-2 border rounded"
+        >
+      </div>
+      
+      <div class="mb-4">
+        <label class="block mb-1">Description</label>
+        <textarea
+          [(ngModel)]="category.categoryDescription"
+          name="description"
+          class="w-full p-2 border rounded"
+          rows="3"
+        ></textarea>
+      </div>
+      
+      <button 
+        type="submit" 
+        [disabled]="isSubmitting"
+        class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+        
+      >
+        {{ isSubmitting ? 'Creating...' : 'Create' }}
+      </button>
+    </form>
+  </div>
+</div>

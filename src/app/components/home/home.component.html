@@ -1,2 +1,39 @@
-<p class="text-3xl font-bold underline">home works!</p>
-<button (click)="btnClick()">Hi there</button>
+<!-- <p class="text-3xl font-bold underline">home works!</p>
+<button (click)="btnClick()">Hi there</button> -->
+<div *ngIf="categories" >
+   
+    <!-- <pre>{{ categories | json }}</pre> -->
+  
+        
+        
+    <div class="h-[100vh] grid grid-cols-3 ml-[auto] mr-[auto] pt-[2rem] gap-2 w-[80vw] ">
+        <div *ngFor="let category of categories"  >         
+                <!-- <p>{{category.categoryName}}</p > -->
+
+
+<div class="max-w-xl w-[18rem] h-[12rem] p-6 bg-white border border-gray-200 rounded-lg shadow-sm ">
+    <a href="#">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">{{category.categoryName}}</h5>
+    </a>
+    @if (category.categoryDescription) {
+
+        <p class="mb-3 font-normal text-gray-700 ">{{category.categoryDescription}}</p>
+    }
+    <a (click)="navigateToProduct(category.categoryId)"  
+    class="inline-flex items-center px-4  text-sm font-medium text-center  border text-black rounded-sm hover:bg-gray-200  hover:cursor-pointer">
+        Click
+       
+    </a>
+    
+</div>
+</div>
+
+
+
+
+</div>
+        
+        
+ 
+
+</div>

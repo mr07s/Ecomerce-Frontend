@@ -1,74 +1,48 @@
 <!-- <p>navbar works!</p> -->
-<nav class="flex bg-white h-[4rem] w-full top-0">
-  <div
-    class="w-[4rem] border-1 h-full w-[6rem] flex justify-center items-center"
-  >
-    LoGo
-  </div>
-
-  <!-- Using fo desktop -->
-  <div
-    class="hidden md:flex justify-around items-center h-full w-full border-1"
-  >
-    <a
+<nav class="flex bg-white h-[4rem] w-full top-0 shadow-md">
+  <div class="hidden md:flex justify-around items-center h-full w-full">
+    <a 
+      routerLink="/home" 
+      routerLinkActive="active"
       class="flex rounded-sm w-[4rem] items-center justify-center hover:cursor-pointer"
-      >Home</a
     >
-    <a
+      Home
+    </a>
+  
+    <a 
+      routerLink="/cart" 
+      routerLinkActive="active"
       class="flex rounded-sm w-[4rem] items-center justify-center hover:cursor-pointer"
-      >Cart</a
     >
-    <a
+      Cart
+    </a>
+  
+    <a 
+      routerLink="/search" 
+      routerLinkActive="active"
       class="flex rounded-sm w-[4rem] items-center justify-center hover:cursor-pointer"
-      >Search</a
     >
-    <a
+      Search
+    </a>
+  
+    <a 
+      routerLink="/about" 
+      routerLinkActive="active"
       class="flex rounded-sm w-[4rem] items-center justify-center hover:cursor-pointer"
-      >About</a
     >
-    <a
+      About
+    </a>
+  
+    <a 
+      routerLink="/contacts" 
+      routerLinkActive="active"
       class="flex rounded-sm w-[4rem] items-center justify-center px-10 hover:cursor-pointer"
-      >Contacts</a
     >
+      Contacts
+    </a>
   </div>
-  <!-- For mobile screen -->
-  <button
-    class="md:hidden focus:outline-none ml-auto z-10"
-    (click)="toggleMenu()"
-    *ngIf="!isMenuOpen"
-  >
-    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M4 6h16M4 12h16m-7 6h7"
-      />
-    </svg>
-  </button>
-
-  <div
-    *ngIf="isMenuOpen"
-    class="md:hidden flex flex-col space-y-2 py-4 bg-red-200 h-[100vh] w-[10rem] ml-auto"
-  >
-    <div class="mr-auto ml-4" (click)="toggleMenu()">But</div>
-    <a
-      routerLink="/"
-      routerLinkActive="active"
-      class="block text-center hover:text-gray-300"
-      >Home</a
-    >
-    <a
-      routerLink="/about"
-      routerLinkActive="active"
-      class="block text-center hover:text-gray-300"
-      >About</a
-    >
-    <a
-      routerLink="/contact"
-      routerLinkActive="active"
-      class="block text-center hover:text-gray-300"
-      >Contact</a
-    >
-  </div>
+  
 </nav>
+
+
+<router-outlet></router-outlet>
