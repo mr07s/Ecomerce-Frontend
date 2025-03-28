@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { GetApiComponent } from '../../apiIntegration/get_api/get-api.component';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { Product } from '../../apiIntegration/service/product';
 
 @Component({
   selector: 'app-admin-product-add',
@@ -15,7 +16,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AdminProductAddComponent {
   isSubmitting:boolean=false;
-  product = {
+  product:Product = {
     // categoryName: '',
     // categoryDescription: ''
     productName:'',
@@ -74,6 +75,7 @@ private deleteProductUrl:string|null="http://localhost:8080/api/admin/products";
       onsubmit(){
         console.log("Hi there");
         this.createProduct(this.productId);
+        this.getCategoriesById(this.productId);
 
       }
 
@@ -81,13 +83,17 @@ private deleteProductUrl:string|null="http://localhost:8080/api/admin/products";
         this.http.post(`${this.createProductUrl}/${id}`,
           this.product
         ).subscribe(res=>{
-          console.log("COmpleted successfully");
+          console.log("Completed successfully");
+          this.getCategoriesById(this.productId);
+          console.log(res);
         })
       }
 
       deleteProduct(id:any){
         this.http.delete(`${this.deleteProductUrl}/${id}`).subscribe(res=>{
           console.log("Deleted successfully")
+          console.log(res.toString);
+          console.log(res);
         })
       }
 
